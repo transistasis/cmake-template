@@ -1,7 +1,8 @@
 #include <iostream>
+#include "my_library.h"
 
 int main() {
-  std::cout << "Cats on parade." << std::endl;
+  print_string();
 
   return 0;
 }
