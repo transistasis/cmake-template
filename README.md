@@ -1,2 +1,3 @@
 # cmake-template
-A CMake template for C/C++ projects
+
+This repository contains a CMake template for C/C++ projects.
