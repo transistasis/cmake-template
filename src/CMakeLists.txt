@@ -5,4 +5,6 @@
 add_library ( ${LIBRARY_NAME} STATIC my_library.cpp )
 
 # Specify the location where relevent header files can be found
-target_include_directories( ${LIBRARY_NAME} PUBLIC "." )
+target_include_directories( ${LIBRARY_NAME} PUBLIC 
+  "."
+  ${CMAKE_BINARY_DIR}/configured_files/include )

@@ -19,6 +19,7 @@ option ( COMPILE_EXECUTABLE "Determines whether to compile the executable or not
 
 # Specify which subdirectories CMake should scan for additional dependencies
 add_subdirectory ( src )
+add_subdirectory ( configured )
 
 # Determine whether to process the app directory CMakeLists.txt file or not
 if ( COMPILE_EXECUTABLE )
