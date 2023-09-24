@@ -1,6 +1,6 @@
 #include "my_library.h"
 
-void print_string() 
+void print_string()
 {
-  std::cout << "Cats on parade." << std::endl;
+  std::cout << "Cats on parade. :<" << std::endl;
 }
