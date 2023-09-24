@@ -7,6 +7,8 @@ project (
 
 # Add a library that can be used in the project
 # A library can be STATIC, SHARED, or MODULE
+# A specific library can be compiled by using the following command:
+#   cmake --build . --target Library
 add_library (
   Library
   STATIC

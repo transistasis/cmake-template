@@ -1,4 +1,3 @@
-#include <iostream>
 #include "my_library.h"
 
 int main() {
