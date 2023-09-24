@@ -1,5 +1,9 @@
+# Create lists of the source files needed to build the application
+set ( EXE_SOURCES
+  main.cpp )
+
 # Create an executable from project source code
-add_executable ( ${EXECUTABLE_NAME} main.cpp )
+add_executable ( ${EXECUTABLE_NAME} ${EXE_SOURCES} )
 
 # Link the library target to the executable target
 # This means that Library is a dependency of Executable
