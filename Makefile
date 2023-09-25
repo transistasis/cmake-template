@@ -4,7 +4,7 @@ build : process
 
 # Generates the CMake files necessary to build the project
 process : prepare
-	cd build && cmake ..
+	cd build && cmake .. --graphviz=graph.dot && dot -Tpng graph.dot -o graph.png
 
 # Creates a blank build directory (used to prepare for Windows CMake testing)
 prepare : clean

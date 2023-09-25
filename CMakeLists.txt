@@ -12,6 +12,13 @@ set ( CMAKE_CXX_EXTENSIONS        OFF )
 set ( LIBRARY_NAME    Library )
 set ( EXECUTABLE_NAME Executable )
 
+# This is how to integrate external libraries by using Git submodules
+# NOTE: This external project needs to be a CMake project
+set( CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
+include ( AddGitSubmodule )
+
+add_git_submodule( external/json )
+
 # Define CMake options
 # Build options can be modified from the command line when building using the -D flag:
 #   cmake .. -DCOMPILE_EXECUTABLE=OFF
@@ -20,6 +27,7 @@ option ( COMPILE_EXECUTABLE "Determines whether to compile the executable or not
 # Specify which subdirectories CMake should scan for additional dependencies
 add_subdirectory ( src )
 add_subdirectory ( configured )
+add_subdirectory ( external )
 
 # Determine whether to process the app directory CMakeLists.txt file or not
 if ( COMPILE_EXECUTABLE )
