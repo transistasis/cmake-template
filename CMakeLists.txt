@@ -13,11 +13,51 @@ set ( LIBRARY_NAME    Library )
 set ( EXECUTABLE_NAME Executable )
 
 # This is how to integrate external libraries by using Git submodules
-# NOTE: This external project needs to be a CMake project
 set( CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
 include ( AddGitSubmodule )
 
-add_git_submodule( external/json )
+# In order to use a Git submodule, it would need to be submoduled in external (in this case)
+# If the cloned repository isn't a CMake project, it can be compiled like the library in src
+# add_git_submodule( external/json )
+
+# How to import a CMake-based library without using Git submodules
+include( FetchContent )
+
+# When using FetchContent_Declare, the target is the project name in the project's CMakeLists.txt
+FetchContent_Declare(
+    nlohmann_json
+    GIT_REPOSITORY https://github.com/nlohmann/json
+    GIT_TAG v3.11.2
+    GIT_SHALLOW TRUE)
+FetchContent_MakeAvailable(nlohmann_json)
+
+FetchContent_Declare(
+    fmt
+    GIT_REPOSITORY https://github.com/fmtlib/fmt
+    GIT_TAG 10.1.1
+    GIT_SHALLOW TRUE)
+FetchContent_MakeAvailable(fmt)
+
+FetchContent_Declare(
+    spdlog
+    GIT_REPOSITORY https://github.com/gabime/spdlog
+    GIT_TAG v1.12.0
+    GIT_SHALLOW TRUE)
+FetchContent_MakeAvailable(spdlog)
+
+FetchContent_Declare(
+    cxxopts
+    GIT_REPOSITORY https://github.com/jarro2783/cxxopts
+    GIT_TAG v3.1.1
+    GIT_SHALLOW TRUE)
+FetchContent_MakeAvailable(cxxopts)
+
+FetchContent_Declare(
+    Catch2
+    GIT_REPOSITORY https://github.com/catchorg/Catch2
+    GIT_TAG v3.4.0
+    GIT_SHALLOW TRUE)
+FetchContent_MakeAvailable(Catch2)
 
 # Define CMake options
 # Build options can be modified from the command line when building using the -D flag:

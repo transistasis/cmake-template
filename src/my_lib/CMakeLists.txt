@@ -7,6 +7,10 @@ set ( LIBRARY_SOURCES
 set ( LIBRARY_HEADERS 
   my_library.h )
 
+set ( LIBRARY_INCLUDES 
+  "."
+  ${CMAKE_BINARY_DIR}/configured_files/include )
+
 # Add a library that can be used in the project
 # A library can be STATIC, SHARED, or MODULE
 # A specific library can be compiled by using the following command:
@@ -17,5 +21,10 @@ add_library ( ${LIBRARY_NAME} STATIC
 
 # Specify the location where relevent header files can be found
 target_include_directories( ${LIBRARY_NAME} PUBLIC 
-  "."
-  ${CMAKE_BINARY_DIR}/configured_files/include )
+  ${LIBRARY_INCLUDES} )
+
+  target_link_libraries(${LIBRARY_NAME} PUBLIC
+  nlohmann_json::nlohmann_json
+  fmt::fmt
+  spdlog::spdlog
+  cxxopts::cxxopts)
